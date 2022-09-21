@@ -1,20 +1,24 @@
 {
-  "name": "computernetwork",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/QuintenMuyllaert/ComputerNetwork.git"
-  },
-  "keywords": [],
-  "author": "Quinten Muyllaert",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/QuintenMuyllaert/ComputerNetwork/issues"
-  },
-  "homepage": "https://github.com/QuintenMuyllaert/ComputerNetwork#readme"
+	"name": "computernetwork",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"format": "prettier --write ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/QuintenMuyllaert/ComputerNetwork.git"
+	},
+	"keywords": [],
+	"author": "Quinten Muyllaert",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/QuintenMuyllaert/ComputerNetwork/issues"
+	},
+	"homepage": "https://github.com/QuintenMuyllaert/ComputerNetwork#readme",
+	"devDependencies": {
+		"prettier": "^2.7.1"
+	}
 }

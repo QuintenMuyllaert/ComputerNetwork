@@ -1,0 +1,31 @@
+{
+	"name": "computernetwork",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"workspaces": [
+		"frontend"
+	],
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"format": "prettier --write .",
+		"i": "npm install && npm install -w frontend",
+		"dev": "npm run dev -w frontend"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/QuintenMuyllaert/ComputerNetwork.git"
+	},
+	"keywords": [],
+	"author": "Quinten Muyllaert",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/QuintenMuyllaert/ComputerNetwork/issues"
+	},
+	"homepage": "https://github.com/QuintenMuyllaert/ComputerNetwork#readme",
+	"devDependencies": {
+		"prettier": "^2.7.1",
+		"prettier-plugin-svelte": "^2.7.0",
+		"svelte": "^3.50.1"
+	}
+}

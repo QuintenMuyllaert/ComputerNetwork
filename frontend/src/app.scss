@@ -1,5 +1,26 @@
+:root {
+	--color-background: #111111;
+	--color-text: #efefef;
+}
+
 body {
-	min-width: 100vw;
+	width: 100vw;
 	min-height: 100vh;
 	display: grid;
+
+	color: var(--color-text);
+	background-color: var(--color-background);
+	font-family: Inter, sans-serif, Twemoji;
+	scrollbar-gutter: stable;
+	overflow-x: hidden;
+}
+
+@font-face {
+	font-family: "Twemoji";
+	src: url("/font/Twemoji/Twemoji.ttf");
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/font/Inter/Inter.ttf");
 }

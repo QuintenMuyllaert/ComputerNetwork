@@ -1,36 +1,20 @@
 <script lang="ts">
 	import { Router } from "svelte-router-spa";
+	import routes from "./router";
 
-	import Index from "./pages/index.svelte";
-	import Portfolio from "./pages/portfolio.svelte";
-
-	const routes = [
-		{
-			name: "/",
-			component: Index,
-		},
-		{
-			name: "/portfolio",
-			component: Portfolio,
-		},
-	];
-
-	let text = "Hello World";
+	import Navbar from "./components/Navbar.svelte";
 </script>
 
 <main>
-	<h1>{text}!</h1>
+	<Navbar />
 	<Router {routes} />
 </main>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	main {
 		display: grid;
-		place-items: center;
+		grid-template-rows: auto 1fr;
 		width: 100%;
 		height: 100%;
-		h1 {
-			color: red;
-		}
 	}
 </style>

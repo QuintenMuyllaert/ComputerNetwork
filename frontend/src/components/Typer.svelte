@@ -36,6 +36,7 @@
 			if (sentence === "") {
 				direction = 1;
 				goalSentence = getRandomSentence();
+				await delay(delayBetweenSentences / 2);
 			}
 
 			if (direction === 1) {
@@ -43,12 +44,17 @@
 			} else {
 				sentence = goalSentence.slice(0, sentence.length - 1);
 			}
-			await delay(delayBetweenLetters);
+
+			if (direction === 1) {
+				await delay(delayBetweenLetters);
+			} else {
+				await delay(delayBetweenLetters / 4);
+			}
 		}
 	})();
 </script>
 
-<p>{prefix}{sentence}{suffix}</p>
+<p class="Typer">{prefix}{sentence}{suffix}</p>
 
-<style lang="scss" scoped>
+<style lang="scss">
 </style>

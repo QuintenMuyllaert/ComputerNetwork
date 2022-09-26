@@ -10,8 +10,7 @@
 
 	const particles = [];
 	for (let i = 0; i < 100; i++) {
-		const x = Math.random() * window.innerWidth;
-		particles.push(new Particle(x));
+		particles.push(new Particle());
 	}
 
 	//resize the canvas to the size of the window
@@ -27,10 +26,9 @@
 		let ctx = canvas.getContext("2d");
 
 		//set the canvas size to the window size
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
+		resizeCanvas();
 
-		//clear the canvas
+		window.addEventListener("resize", resizeCanvas);
 
 		//draw the particles
 		const drawParticles = () => {

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <clipPath id="clip-Favicon">
+      <rect width="512" height="512"/>
+    </clipPath>
+  </defs>
+  <g id="Favicon" clip-path="url(#clip-Favicon)">
+    <rect width="512" height="512" fill="rgba(255,255,255,0)"/>
+    <text id="Q" transform="translate(105 396)" font-size="384" font-family="Inter" font-weight="800"><tspan x="0" y="0">Q</tspan></text>
+    <g id="Trace" transform="translate(29 14)">
+      <circle id="Ball" cx="16" cy="16" r="16" transform="translate(0 110)"/>
+      <circle id="Ball-2" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick" width="16" height="106" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-2" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-2" data-name="Trace" transform="translate(29 14)">
+      <circle id="Ball-3" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 110)"/>
+      <circle id="Ball-4" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-3" data-name="Stick" width="16" height="106" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-4" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-2" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-3" data-name="Trace" transform="translate(97 212) rotate(180)">
+      <circle id="Ball-5" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 110)"/>
+      <circle id="Ball-6" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-5" data-name="Stick" width="16" height="106" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-6" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-3" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-4" data-name="Trace" transform="translate(282 482) rotate(-90)">
+      <circle id="Ball-7" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 110)"/>
+      <circle id="Ball-8" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-7" data-name="Stick" width="16" height="106" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-8" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-4" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-5" data-name="Trace" transform="translate(442 85) rotate(90)">
+      <circle id="Ball-9" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 85)"/>
+      <circle id="Ball-10" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-9" data-name="Stick" width="16" height="80" rx="8" transform="translate(8 21)"/>
+      <rect id="Stick-10" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-5" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-6" data-name="Trace" transform="translate(105 85)">
+      <circle id="Ball-11" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-12" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-11" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-12" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-6" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-7" data-name="Trace" transform="translate(222 30)">
+      <circle id="Ball-13" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-14" data-name="Ball" cx="16" cy="16" r="16" transform="translate(224)"/>
+      <rect id="Stick-13" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-14" data-name="Stick" width="16" height="218" rx="8" transform="translate(22 24) rotate(-90)"/>
+      <rect id="Angle-7" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-8" data-name="Trace" transform="translate(458 380) rotate(180)">
+      <circle id="Ball-15" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 110)"/>
+      <circle id="Ball-16" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-15" data-name="Stick" width="16" height="106" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-16" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-8" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-9" data-name="Trace" transform="translate(71 468) rotate(-90)">
+      <circle id="Ball-17" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-18" data-name="Ball" cx="16" cy="16" r="16" transform="translate(224)"/>
+      <rect id="Stick-17" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-18" data-name="Stick" width="16" height="218" rx="8" transform="translate(22 24) rotate(-90)"/>
+      <rect id="Angle-9" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-10" data-name="Trace" transform="translate(207 400) rotate(90)">
+      <circle id="Ball-19" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-20" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-19" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-20" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-10" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-11" data-name="Trace" transform="translate(492 215) rotate(180)">
+      <circle id="Ball-21" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-22" data-name="Ball" cx="16" cy="16" r="16" transform="translate(36)"/>
+      <rect id="Stick-21" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-22" data-name="Stick" width="16" height="32" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-11" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-12" data-name="Trace" transform="translate(476 403) rotate(90)">
+      <circle id="Ball-23" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 36)"/>
+      <circle id="Ball-24" data-name="Ball" cx="16" cy="16" r="16" transform="translate(47)"/>
+      <rect id="Stick-23" data-name="Stick" width="16" height="32" rx="8" transform="translate(8 20)"/>
+      <rect id="Stick-24" data-name="Stick" width="16" height="38" rx="8" transform="translate(20 24) rotate(-90)"/>
+      <rect id="Angle-12" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+    <g id="Trace-13" data-name="Trace" transform="translate(29 500) rotate(-90)">
+      <circle id="Ball-25" data-name="Ball" cx="16" cy="16" r="16" transform="translate(0 195)"/>
+      <circle id="Ball-26" data-name="Ball" cx="16" cy="16" r="16" transform="translate(224)"/>
+      <rect id="Stick-25" data-name="Stick" width="16" height="189" rx="8" transform="translate(8 22)"/>
+      <rect id="Stick-26" data-name="Stick" width="16" height="218" rx="8" transform="translate(22 24) rotate(-90)"/>
+      <rect id="Angle-13" data-name="Angle" width="16" height="32" rx="8" transform="translate(27.627 5.059) rotate(45)"/>
+    </g>
+  </g>
+</svg>

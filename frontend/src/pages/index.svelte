@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Typer from "../components/Typer.svelte";
 	import RainAnimation from "../components/RainAnimation.svelte";
+	import CrumbledWall from "../components/CrumbledWall.svelte";
 
 	const sentences: string[] = [
 		"Hello world! 🌍",
@@ -45,6 +46,9 @@
 		<Typer prefix="< " suffix=" />" {sentences} />
 	</div>
 	<RainAnimation active={true} />
+	<div class="wall">
+		<CrumbledWall bottom={false} />
+	</div>
 </main>
 
 <style lang="scss">
@@ -52,6 +56,7 @@
 		display: grid;
 		position: relative;
 		place-items: center;
+		z-index: 100;
 
 		div {
 			display: grid;
@@ -61,11 +66,20 @@
 			height: fit-content;
 		}
 		h1 {
-			font-size: 2.75rem;
+			font-size: 2.5rem;
 		}
 
 		h2 {
-			font-size: 2.5rem;
+			font-size: 2.25rem;
+		}
+
+		.wall {
+			width: 100%;
+			height: 10rem;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
 		}
 	}
 

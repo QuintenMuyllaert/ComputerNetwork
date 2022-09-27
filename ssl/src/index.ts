@@ -5,7 +5,8 @@ import { generateCertificate } from "./app";
 
 dotenv.config();
 
-(async () => {
+const generateCertificateFiles = async () => {
+	console.log(process.env);
 	const { DOMAIN, CLOUDFLARE_TOKEN, MAINTAINER_EMAIL } = process.env;
 	if (!DOMAIN || !CLOUDFLARE_TOKEN || !MAINTAINER_EMAIL) {
 		console.error("Missing environment variables\nMake sure you have a .env file with the following variables:\nDOMAIN\nCLOUDFLARE_TOKEN\nMAINTAINER_EMAIL");
@@ -29,6 +30,17 @@ dotenv.config();
 			fs.writeFile("./pems/privateKey.pem", certificate.privateKey),
 			fs.writeFile("./pems/publicKey.pem", certificate.publicKey),
 			fs.writeFile("./pems/csr.pem", certificate.csr),
+			fs.writeFile(
+				"./pems/data.json",
+				JSON.stringify(
+					{
+						iat: certificate.iat,
+						exp: certificate.exp,
+					},
+					null,
+					2,
+				),
+			),
 		]);
 
 		console.log("Done!");
@@ -36,4 +48,37 @@ dotenv.config();
 		console.error("Something went wrong while generating certificate", e);
 		process.exit(1);
 	}
+};
+
+(async () => {
+	try {
+		await fs.stat("./pems/data.json");
+	} catch (e) {
+		console.log("No certificate metadata found, generating new certificate");
+		await generateCertificateFiles();
+	}
+
+	const checkCertificate = async (daysRemaining: number = 10) => {
+		const { iat, exp } = JSON.parse(await fs.readFile("./pems/data.json", "utf8"));
+		const buffer = 60 * 60 * 1000 * 24 * daysRemaining;
+		if (Date.now() + buffer > exp) {
+			return true;
+		}
+		return false;
+	};
+
+	if (await checkCertificate(10)) {
+		console.log("Certificate is about to expire, generating new certificate");
+		await generateCertificateFiles();
+	}
+
+	const dailyCheckInterval = setInterval(async () => {
+		console.log("Checking certificate expiration...");
+		if (await checkCertificate(10)) {
+			console.log("Certificate is about to expire, generating new certificate");
+			await generateCertificateFiles();
+		} else {
+			console.log("Certificate is still valid");
+		}
+	}, 1000 * 60 * 60 * 24); // 1 day
 })();

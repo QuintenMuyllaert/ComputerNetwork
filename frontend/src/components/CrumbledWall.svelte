@@ -113,6 +113,7 @@
 		resizeCanvas();
 
 		window.addEventListener("resize", resizeCanvas);
+		canvas.parentElement.addEventListener("resize", resizeCanvas);
 
 		let lastColor = window.getComputedStyle(canvas, null).getPropertyValue("--color-primary");
 		const colorCheck = () => {

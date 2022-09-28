@@ -7,7 +7,6 @@ import { saveOnFs, saveOnMongoDB } from "./save";
 dotenv.config();
 
 const generateCertificateFiles = async () => {
-	console.log(process.env);
 	const { DOMAIN, CLOUDFLARE_TOKEN, MAINTAINER_EMAIL } = process.env;
 	if (!DOMAIN || !CLOUDFLARE_TOKEN || !MAINTAINER_EMAIL) {
 		console.error("Missing environment variables\nMake sure you have a .env file with the following variables:\nDOMAIN\nCLOUDFLARE_TOKEN\nMAINTAINER_EMAIL");
@@ -20,7 +19,7 @@ const generateCertificateFiles = async () => {
 			cloudflareToken: CLOUDFLARE_TOKEN,
 			maintainerEmail: MAINTAINER_EMAIL,
 			keySize: 4096,
-			staging: true,
+			staging: false,
 			verbose: true,
 		});
 

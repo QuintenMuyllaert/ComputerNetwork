@@ -5,6 +5,7 @@ interface CertificateData {
 	csr: string;
 	iat: number;
 	exp: number;
+	staging: boolean;
 }
 
 import { promises as fs } from "fs";
@@ -22,6 +23,7 @@ export const saveOnFs = async (certificate: CertificateData) => {
 				{
 					iat: certificate.iat,
 					exp: certificate.exp,
+					staging: certificate.staging,
 				},
 				null,
 				2,

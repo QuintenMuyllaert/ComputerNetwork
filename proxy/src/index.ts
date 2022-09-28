@@ -16,8 +16,9 @@ app.use(
 		ws: true,
 		router: (req: Request) => {
 			const { host } = req.headers;
-			const subdomain = host?.split(".")[0];
-			const folder = subdomain ? `${subdomain}/` : "root/";
+
+			const subdomain = host?.split(".").length === 3 && host?.split(".")[0];
+			const folder = subdomain ? `${subdomain}/` : "www/";
 
 			//remove query from url
 			let url = req.url?.split("?")[0];

@@ -12,7 +12,7 @@ interface Config {
 export const generateCertificate = async (config: Config) => {
 	const { domain, cloudflareToken, maintainerEmail } = config;
 	const keySize = config.keySize || 4096;
-	const staging = config.staging || true;
+	const staging = config.staging === false ? false : true;
 	const verbose = config.verbose || false;
 
 	const returnObject = {
@@ -22,6 +22,7 @@ export const generateCertificate = async (config: Config) => {
 		csr: "",
 		iat: 0,
 		exp: 0,
+		staging,
 	};
 
 	const verboseLog = (...args: any[]) => {

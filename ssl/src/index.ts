@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import { promises as fs } from "fs";
 
 import { generateCertificate } from "./app";
+import { saveOnFs, saveOnMongoDB } from "./save";
 
 dotenv.config();
 
@@ -25,23 +26,7 @@ const generateCertificateFiles = async () => {
 
 		console.log(certificate);
 
-		await Promise.all([
-			fs.writeFile("./pems/certificate.pem", certificate.certificate),
-			fs.writeFile("./pems/privateKey.pem", certificate.privateKey),
-			fs.writeFile("./pems/publicKey.pem", certificate.publicKey),
-			fs.writeFile("./pems/csr.pem", certificate.csr),
-			fs.writeFile(
-				"./pems/data.json",
-				JSON.stringify(
-					{
-						iat: certificate.iat,
-						exp: certificate.exp,
-					},
-					null,
-					2,
-				),
-			),
-		]);
+		await Promise.all([saveOnFs(certificate), saveOnMongoDB(certificate)]);
 
 		console.log("Done!");
 	} catch (e) {

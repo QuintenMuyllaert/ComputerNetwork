@@ -22,6 +22,7 @@
 		"acme-dns-01-cloudflare": "^1.2.5",
 		"dotenv": "^16.0.2",
 		"keypairs": "^1.2.14",
+		"mongodb": "^4.10.0",
 		"rsa-csr": "^1.0.6"
 	}
 }

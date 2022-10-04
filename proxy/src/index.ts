@@ -1,52 +1,89 @@
 import dotenv from "dotenv";
 import express, { Request, Response } from "express";
 import mime from "mime-types";
+import compression from "compression";
 
 import { createServer } from "spdy";
 
 import { createProxyMiddleware } from "http-proxy-middleware";
 
+const config = require("../config.json");
+
 dotenv.config();
 
 const app = express();
+
+app.use(compression());
 
 app.use(
 	createProxyMiddleware({
 		target: process.env.SPACE_URI,
 		changeOrigin: true,
 		ws: true,
+		secure: false,
 		router: (req: Request) => {
 			const { host } = req.headers;
 
-			const subdomain = host?.split(".").length === 3 && host?.split(".")[0];
-			const folder = subdomain ? `${subdomain}/` : "www/";
-
-			//remove query from url
-			let url = req.url?.split("?")[0];
-
-			//add trailing slash if missing and there is no file extension
-			if (url && !url.includes(".") && !url.endsWith("/")) {
-				url += "/";
+			const lowercaseHost = host?.toLowerCase() || "";
+			let hostData = config[lowercaseHost] || config["default"] || {};
+			if (hostData.sameAs) {
+				hostData = config[hostData.sameAs] || {};
 			}
 
-			//if requesting a route ending in / then redirect to the root index.html
-			if (url?.endsWith("/")) {
-				//expressy way to redirect
-				req.url = `${url}index.html`;
+			if (hostData?.modules?.includes("spa") || hostData?.modules?.includes("static")) {
+				const subdomain = host?.split(".").length === 3 && host?.split(".")[0];
 
-				//spa way to redirect
-				req.url = "/index.html";
+				const folder = subdomain ? `${subdomain}/` : "www/";
+
+				//remove query from url
+				let url = req.url?.split("?")[0];
+
+				//add trailing slash if missing and there is no file extension
+				if (url && !url.includes(".") && !url.endsWith("/")) {
+					url += "/";
+				}
+
+				//if requesting a route ending in / then redirect to the root index.html
+				if (url?.endsWith("/")) {
+					if (hostData?.modules?.includes("spa")) {
+						req.url = "/index.html";
+					} else {
+						req.url = `${url}index.html`;
+					}
+				}
+
+				return `${hostData.endpoint}${folder}`;
 			}
 
-			return `${process.env.SPACE_URI}${folder}`;
+			return hostData.endpoint;
 		},
 		onProxyRes: (proxyRes, req: Request, res: Response) => {
-			//get the file extension
-			const extension = req.url?.split(".").pop() || ".txt";
-			const contentType = mime.contentType(extension) || "text/plain";
+			const { host } = req.headers;
+			const lowercaseHost = host?.toLowerCase() || "";
+			let hostData = config[lowercaseHost] || config["default"] || {};
+			if (hostData.sameAs) {
+				hostData = config[hostData.sameAs] || {};
+			}
 
-			//set correct content type
-			proxyRes.headers["Content-Type"] = contentType;
+			//get the file extension
+			const extension = req.url?.split(".").pop() || "txt";
+
+			if (hostData?.modules?.includes("mime")) {
+				const contentType = mime.contentType(extension) || "text/plain";
+
+				//set correct content type
+				proxyRes.headers["Content-Type"] = contentType;
+			}
+
+			if (hostData?.modules?.includes("cache")) {
+				//set correct cache control headers for static assets set it to 1 year
+				//jpg, png, gif, svg, webp, mp4, webm, mp3, ogg, oga, ogv, woff, woff2, ttf, eot, js, css
+				const staticExtensions = ["jpg", "png", "gif", "svg", "webp", "mp4", "webm", "mp3", "ogg", "oga", "ogv", "woff", "woff2", "ttf", "eot", "js", "css"];
+
+				if (staticExtensions.includes(extension.toLowerCase())) {
+					proxyRes.headers["Cache-Control"] = "public, max-age=31536000";
+				}
+			}
 		},
 	}),
 );

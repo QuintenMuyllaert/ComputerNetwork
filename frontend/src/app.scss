@@ -1,5 +1,45 @@
+:root {
+	--color-secondary: #7ddada;
+}
+
+.dark {
+	--color-primary: #121233;
+	--color-background: #22223a;
+	--color-text: #efefef;
+	--color-nav-background: #121222;
+	--color-container-background: #121222;
+
+	--color-tag-background: var(--color-background);
+}
+
+.light {
+	--color-primary: #3ba7a7;
+	--color-background: #eee;
+	--color-text: #001;
+	--color-nav-background: #3ba7a7;
+	--color-container-background: #ffffff;
+
+	--color-tag-background: var(--color-primary);
+}
+
 body {
-	min-width: 100vw;
+	width: 100%;
 	min-height: 100vh;
 	display: grid;
+
+	font-family: Inter, sans-serif, Twemoji;
+	scrollbar-gutter: stable;
+	overflow-x: hidden;
+}
+
+@font-face {
+	font-family: "Twemoji";
+	src: url("/font/Twemoji/Twemoji.ttf");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/font/Inter/Inter.ttf");
+	font-display: swap;
 }

@@ -1,19 +1,29 @@
 <script lang="ts">
-	let text = "Hello World";
+	import { Router } from "svelte-router-spa";
+	import routes from "./router";
+
+	import Navbar from "./components/Navbar.svelte";
+
+	//get the preferred theme from the user using the media query
+	const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+	let appTheme = prefersDarkScheme ? "dark" : "light";
+	if (localStorage.getItem("theme")) appTheme = localStorage.getItem("theme");
 </script>
 
-<main>
-	<h1>{text}!</h1>
+<main id="app" class={appTheme}>
+	<Navbar />
+	<Router {routes} />
 </main>
 
-<style lang="scss">
-	main {
+<style lang="scss" scoped>
+	main#app {
 		display: grid;
-		place-items: center;
+		grid-template-rows: auto 1fr;
 		width: 100%;
 		height: 100%;
-		h1 {
-			color: red;
-		}
+
+		color: var(--color-text);
+		background-color: var(--color-background);
 	}
 </style>

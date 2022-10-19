@@ -81,7 +81,7 @@
 					<div class="text-container">
 						<h1>{article.name}</h1>
 						<p>{article.description}</p>
-						<img src={article.img} alt={article.name} />
+						<img src={article.img} alt={article.name} loading="lazy" />
 						<div class="tags">
 							{#each article.tech as tech}
 								<span>{tech}</span>
@@ -102,7 +102,7 @@
 						</div>
 					</div>
 					{#if i % 2 == 1}
-						<img src={article.img} alt={article.name} />
+						<img src={article.img} alt={article.name} loading="lazy" />
 					{/if}
 				{/if}
 			</div>
@@ -113,7 +113,6 @@
 <style lang="scss" scoped>
 	main {
 		display: grid;
-		justify-items: center;
 		padding: 1rem 0;
 		gap: 1rem;
 	}
@@ -130,6 +129,7 @@
 		justify-items: center;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: 1fr;
+		width: fit-content;
 		padding: 0 1rem;
 	}
 
@@ -180,6 +180,7 @@
 		}
 
 		.container {
+			max-width: min(100%, 1200px);
 			& > :first-child {
 				transform: translateX(2rem);
 			}

@@ -35,9 +35,11 @@ body {
 @font-face {
 	font-family: "Twemoji";
 	src: url("/font/Twemoji/Twemoji.ttf");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: "Inter";
 	src: url("/font/Inter/Inter.ttf");
+	font-display: swap;
 }

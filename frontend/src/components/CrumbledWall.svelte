@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onDestroy, onMount } from "svelte";
+	import { onMount } from "svelte";
 
 	export let tilesize: number = 8;
 	export let top: boolean = true;
@@ -10,25 +10,14 @@
 
 	//resize the canvas to the size of the window
 	function resizeCanvas() {
+		if (!canvas) return;
+
 		//set canvas width and height to the parent width and height
-		canvas.width = canvas.parentElement.clientWidth;
-		canvas.height = canvas.parentElement.clientHeight;
+		canvas.width = canvas?.parentElement?.clientWidth ?? 0;
+		canvas.height = canvas?.parentElement?.clientHeight ?? 0;
 
 		draw();
 	}
-
-	document.addEventListener("resize", resizeCanvas);
-
-	const url = "/img/dark_squares.webp";
-
-	const loadImageAsync = (url: string) => {
-		return new Promise<HTMLImageElement>((resolve, reject) => {
-			const img = new Image();
-			img.onload = () => resolve(img);
-			img.onerror = reject;
-			img.src = url;
-		});
-	};
 
 	const crumble = {
 		top,
@@ -37,50 +26,13 @@
 		bottom,
 	};
 
-	const drawAll = async () => {
-		const ctx = canvas.getContext("2d");
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-		const img = await loadImageAsync(url);
-
-		//the image is a tiling pattern
-		//every square is tilesizextilesize pixels
-		//the image is 297x297 pixels
-		//so the pattern is 27x27 squares
-		//make a crumbledWall pattern
-		const pattern = ctx.createPattern(img, "repeat");
-		ctx.fillStyle = pattern;
-		ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-		//crumble the wall by drawing random rectangles over the edges
-		//the rectangles are tilesizextilesize pixels
-		const xs = canvas.width / tilesize;
-		const ys = canvas.height / tilesize;
-		for (let x = 0; x < xs; x++) {
-			for (let y = 0; y < ys; y++) {
-				//the closer to the edge, the more likely it is to crumble
-				const chance = Math.min(x, y, xs - x, ys - y) / 10;
-				const rand = Math.random();
-				if (rand > chance) {
-					ctx.clearRect(x * tilesize, y * tilesize, tilesize, tilesize);
-				}
-			}
-		}
-	};
-
 	const draw = async () => {
 		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
+
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-		const img = await loadImageAsync(url);
-
-		//the image is a tiling pattern
-		//every square is tilesizextilesize pixels
-		//the image is 297x297 pixels
-		//so the pattern is 27x27 squares
-		//make a crumbledWall pattern
-		const pattern = ctx.createPattern(img, "repeat");
-		const color = window.getComputedStyle(canvas, null).getPropertyValue("--color-primary");
+		const color = window?.getComputedStyle(canvas, null)?.getPropertyValue("--color-primary");
 		ctx.fillStyle = color; ///"#3BA7A7"; // "#51a0ce"; //pattern;
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -113,11 +65,15 @@
 		resizeCanvas();
 
 		window.addEventListener("resize", resizeCanvas);
-		canvas.parentElement.addEventListener("resize", resizeCanvas);
 
-		let lastColor = window.getComputedStyle(canvas, null).getPropertyValue("--color-primary");
+		canvas?.parentElement?.addEventListener("resize", resizeCanvas);
+
+		let lastColor = window?.getComputedStyle(canvas, null)?.getPropertyValue("--color-primary");
 		const colorCheck = () => {
-			const color = window.getComputedStyle(canvas, null).getPropertyValue("--color-primary");
+			if (!canvas) return;
+			if (typeof window.getComputedStyle !== "function") return;
+
+			const color = window?.getComputedStyle(canvas, null)?.getPropertyValue("--color-primary");
 			if (color !== lastColor) {
 				lastColor = color;
 				resizeCanvas();
@@ -126,6 +82,12 @@
 		};
 
 		const interval = requestAnimationFrame(colorCheck);
+
+		return () => {
+			window.removeEventListener("resize", resizeCanvas);
+			canvas?.parentElement?.removeEventListener("resize", resizeCanvas);
+			cancelAnimationFrame(interval);
+		};
 	});
 </script>
 

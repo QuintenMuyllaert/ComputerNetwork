@@ -2,6 +2,7 @@
 	import Typer from "../components/Typer.svelte";
 	import RainAnimation from "../components/RainAnimation.svelte";
 	import CrumbledWall from "../components/CrumbledWall.svelte";
+	import Navbar from "../components/Navbar.svelte";
 
 	const sentences: string[] = [
 		"Hello world! 🌍",
@@ -39,19 +40,27 @@
 	];
 </script>
 
-<main>
-	<div>
-		<h1>ComputerNetwork</h1>
-		<h2>Quinten Muyllaert</h2>
-		<Typer prefix="< " suffix=" />" {sentences} />
-	</div>
-	<RainAnimation active={true} />
-	<div class="wall">
-		<CrumbledWall bottom={false} />
-	</div>
-</main>
+<div class="page">
+	<Navbar />
+	<main>
+		<div>
+			<h1>ComputerNetwork</h1>
+			<h2>Quinten Muyllaert</h2>
+			<Typer prefix="< " suffix=" />" {sentences} />
+		</div>
+		<RainAnimation active={true} />
+		<div class="wall">
+			<CrumbledWall bottom={false} />
+		</div>
+	</main>
+</div>
 
 <style lang="scss">
+	.page {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+
 	main {
 		display: grid;
 		position: relative;

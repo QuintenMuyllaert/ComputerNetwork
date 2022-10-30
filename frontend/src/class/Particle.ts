@@ -1,9 +1,20 @@
+export interface IParticle {
+	x: number;
+	y: number;
+	speed: number;
+	alpha: number;
+	size: number;
+	character: string;
+	reset(): void;
+	draw(ctx: CanvasRenderingContext2D): void;
+}
+
 export const Particle = class Particle {
-	x: number = Math.random();
-	y: number = 0;
-	speed: number = 0;
-	alpha: number = 0;
-	size: number = 0;
+	x = Math.random();
+	y = 0;
+	speed = 0;
+	alpha = 0;
+	size = 0;
 	character: string = Math.random() > 0.5 ? "1" : "0";
 
 	constructor() {
@@ -17,9 +28,7 @@ export const Particle = class Particle {
 		this.size = 18 * Math.random();
 	}
 
-	draw(ctx) {
-		const width = ctx.canvas.width;
-
+	draw(ctx: CanvasRenderingContext2D) {
 		this.y += this.speed;
 		this.alpha -= 0.01;
 		this.size -= 0.1;
@@ -31,6 +40,8 @@ export const Particle = class Particle {
 		if (this.size < 0) {
 			this.reset();
 		}
+
+		const width = ctx.canvas.width;
 
 		ctx.font = this.size + "px serif";
 		//convert alpha to hex

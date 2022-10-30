@@ -11,17 +11,17 @@
 	let sentence = "";
 
 	//get random sentence from array that is not the same as the previous one
-	function getRandomSentence() {
+	const getRandomSentence = (): string => {
 		if (sentences.length === 1) {
 			return sentences[0];
 		}
 
-		let newSentence = sentences[Math.floor(Math.random() * sentences.length)];
+		const newSentence = sentences[Math.floor(Math.random() * sentences.length)];
 		if (newSentence === goalSentence) {
 			return getRandomSentence();
 		}
 		return newSentence;
-	}
+	};
 
 	goalSentence = getRandomSentence();
 

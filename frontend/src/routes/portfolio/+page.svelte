@@ -1,5 +1,7 @@
 <script lang="ts">
-	import CrumbledContainer from "../components/CrumbledContainer.svelte";
+	import { onMount } from "svelte";
+	import CrumbledContainer from "../../components/CrumbledContainer.svelte";
+	import Navbar from "../../components/Navbar.svelte";
 
 	interface Project {
 		name: string;
@@ -10,6 +12,7 @@
 	}
 
 	let articles: Project[] = [];
+	let mobile: boolean = false;
 
 	const fetchArticles = async () => {
 		const response = await fetch("/portfolio.md");
@@ -40,6 +43,9 @@
 					link: "",
 				};
 			}
+
+			if (!bufferArticle) continue;
+
 			if (line.startsWith("[img]:")) {
 				bufferArticle.img = line.slice(7);
 			}
@@ -56,61 +62,75 @@
 		if (bufferArticle) {
 			articles.push(bufferArticle);
 		}
-		console.log(articles);
+
 		return articles;
 	};
 
-	(async () => {
-		articles = await fetchArticles();
-	})();
-
-	let mobile = window.innerWidth < 768;
-
-	window.addEventListener("resize", () => {
-		console.log("resize");
+	const onResize = () => {
 		mobile = window.innerWidth < 768;
+	};
+
+	onMount(() => {
+		(async () => {
+			articles = await fetchArticles();
+		})();
+
+		mobile = window.innerWidth < 768;
+
+		window.addEventListener("resize", onResize);
+		return () => {
+			articles = [];
+			window.removeEventListener("resize", onResize);
+		};
 	});
 </script>
 
-<main>
-	<!-- loop over the articles-->
-	{#each articles as article, i}
-		<CrumbledContainer>
-			<div class="container">
-				{#if mobile}
-					<div class="text-container">
-						<h1>{article.name}</h1>
-						<p>{article.description}</p>
-						<img src={article.img} alt={article.name} loading="lazy" />
-						<div class="tags">
-							{#each article.tech as tech}
-								<span>{tech}</span>
-							{/each}
+<div class="page">
+	<Navbar />
+	<main>
+		<!-- loop over the articles-->
+		{#each articles as article, i}
+			<CrumbledContainer>
+				<div class="container">
+					{#if mobile}
+						<div class="text-container">
+							<h1>{article.name}</h1>
+							<p>{article.description}</p>
+							<img src={article.img} alt={article.name} loading="lazy" />
+							<div class="tags">
+								{#each article.tech as tech}
+									<span>{tech}</span>
+								{/each}
+							</div>
 						</div>
-					</div>
-				{:else}
-					{#if i % 2 == 0}
-						<img src={article.img} alt={article.name} />
-					{/if}
-					<div class="text-container">
-						<h1>{article.name}</h1>
-						<p>{article.description}</p>
-						<div class="tags">
-							{#each article.tech as tech}
-								<span>{tech}</span>
-							{/each}
+					{:else}
+						{#if i % 2 == 0}
+							<img src={article.img} alt={article.name} />
+						{/if}
+						<div class="text-container">
+							<h1>{article.name}</h1>
+							<p>{article.description}</p>
+							<div class="tags">
+								{#each article.tech as tech}
+									<span>{tech}</span>
+								{/each}
+							</div>
 						</div>
-					</div>
-					{#if i % 2 == 1}
-						<img src={article.img} alt={article.name} loading="lazy" />
+						{#if i % 2 == 1}
+							<img src={article.img} alt={article.name} loading="lazy" />
+						{/if}
 					{/if}
-				{/if}
-			</div>
-		</CrumbledContainer>
-	{/each}
-</main>
+				</div>
+			</CrumbledContainer>
+		{/each}
+	</main>
+</div>
 
-<style lang="scss" scoped>
+<style lang="scss">
+	.page {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
 	main {
 		display: grid;
 		padding: 1rem 0;

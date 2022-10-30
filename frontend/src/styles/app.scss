@@ -26,10 +26,12 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	display: grid;
-
 	font-family: Inter, sans-serif, Twemoji;
 	scrollbar-gutter: stable;
 	overflow-x: hidden;
+
+	background-color: var(--color-background);
+	color: var(--color-text);
 }
 
 @font-face {

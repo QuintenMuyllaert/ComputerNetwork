@@ -2,13 +2,14 @@
 	import { onMount } from "svelte";
 
 	import { Particle } from "../class/Particle";
+	import type { IParticle } from "../class/Particle";
 
 	export let active: boolean = true;
 
 	//get the canvas element
 	let canvas: HTMLCanvasElement;
 
-	const particles = [];
+	const particles: IParticle[] = [];
 	for (let i = 0; i < 100; i++) {
 		particles.push(new Particle());
 	}
@@ -19,11 +20,10 @@
 		canvas.height = window.innerHeight;
 	}
 
-	document.addEventListener("resize", resizeCanvas);
-
 	//get the canvas context when loaded
 	onMount(() => {
-		let ctx = canvas.getContext("2d");
+		const ctx = canvas.getContext("2d");
+		if (!ctx) return;
 
 		//set the canvas size to the window size
 		resizeCanvas();
@@ -31,17 +31,26 @@
 		window.addEventListener("resize", resizeCanvas);
 
 		//draw the particles
+		let finished = true;
 		const drawParticles = () => {
-			if (!active) return;
-
+			finished = false;
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			particles.forEach((particle) => {
+			for (const particle of particles) {
 				particle.draw(ctx);
-			});
-			requestAnimationFrame(drawParticles);
+			}
+			finished = true;
 		};
 
-		requestAnimationFrame(drawParticles);
+		const renderLoop = setInterval(() => {
+			if (!active) return;
+			if (!finished) return;
+			requestAnimationFrame(drawParticles);
+		}, 1000 / 60);
+
+		return () => {
+			window.removeEventListener("resize", resizeCanvas);
+			clearInterval(renderLoop);
+		};
 	});
 </script>
 

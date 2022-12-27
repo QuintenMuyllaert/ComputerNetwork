@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { bestImageFileFormatThisBrowserSupports } from "../utils/imageformat";
+	import { backendUrl } from "../utils/globals";
+
 	let button: HTMLButtonElement;
 
 	function toggleTheme() {
@@ -19,7 +22,7 @@
 </script>
 
 <nav>
-	<a href="/"><img src="/favicon.png" alt="Site logo" /></a>
+	<a href="/"><img src={`${backendUrl}/img/favicon.png?width=${64}&format=${bestImageFileFormatThisBrowserSupports()}&quality=80`} alt="Site logo" loading="eager" /></a>
 	<ul>
 		<li><a href="/">Home</a></li>
 		<li><a href="/portfolio">Portfolio</a></li>

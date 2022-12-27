@@ -1,6 +1,6 @@
 # WebRTC Chat
 
-[img]: https://via.placeholder.com/1920x1080
+[img]: https://via.placeholder.com/720x480
 
 Lorem
 
@@ -8,7 +8,7 @@ Lorem
 
 # UI Case Telenet TV
 
-[img]: https://via.placeholder.com/1920x1080
+[img]: https://via.placeholder.com/720x480
 
 Lorem
 
@@ -253,7 +253,7 @@ I did the programming and electronics my partner made the faces in Solidworks.
 
 # Astro PI - ESA
 
-[img]: /img/portfolio/Ursa Major_VegCam_307.png
+[img]: /img/portfolio/UrsaMajor_VegCam_307.png
 
 In a group of 4 people we made a project for the ESA.
 We made a project that took pictures of the earth from the ISS.
@@ -263,7 +263,7 @@ We then used the data from the pictures to detect and label water land and cloud
 
 # Rope Bridge Robot
 
-[img]: /img/portfolio/10-11-2017%20RopeRobot/ropebot.webp
+[img]: /img/portfolio/ropebot.webp
 
 In our engineering class we had to make a robot that could cross a rope bridge. This project was made in groups of 2. We used a Lego Technic battery and motor set to power the robot. We made customized gears in Solidworks so we could achieve a strong enough torque to cross the rope bridge. We mainly used lasercut wood for the shassis. Theres also lasercut plexiglass involved and the axles are made from PCV pipe.
 
@@ -271,7 +271,7 @@ In our engineering class we had to make a robot that could cross a rope bridge. 
 
 # Europe day - Coderdojo
 
-[img]: /img/portfolio/28-05-2016%20Europe%20Day/IMG_20160528_094150.jpg
+[img]: /img/portfolio/IMG_20160528_094150.jpg
 
 Europe day 2016 I was one of the volunteers at the Popup Coderdojo.
 This dojo was held in the city of Brussels at the European Parliament.

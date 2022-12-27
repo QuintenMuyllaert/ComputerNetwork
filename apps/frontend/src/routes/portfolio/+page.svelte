@@ -1,4 +1,5 @@
 <script lang="ts">
+  	import { bestImageFileFormatThisBrowserSupports } from "../../utils/imageformat";
 	import { onMount } from "svelte";
 	import CrumbledContainer from "../../components/CrumbledContainer.svelte";
 	import Navbar from "../../components/Navbar.svelte";
@@ -48,6 +49,10 @@
 
 			if (line.startsWith("[img]:")) {
 				bufferArticle.img = line.slice(7);
+				if(!bufferArticle.img.startsWith("http")){
+					const width = Math.min(768, window.innerWidth);
+					bufferArticle.img = `http://localhost:3000${bufferArticle.img}?format=${bestImageFileFormatThisBrowserSupports()}&quality=80&width=${width}`
+				}
 			}
 			if (line.startsWith("[link]:")) {
 				bufferArticle.link = line.slice(7);
@@ -70,28 +75,14 @@
 		mobile = window.innerWidth < 768;
 	};
 
-	const bestImageFileFormatThisBrowserSupports = () => {
-		//webp > avif > jpg > png > gif
-		const webp = document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") == 0;
-		const avif = document.createElement("canvas").toDataURL("image/avif").indexOf("data:image/avif") == 0;
-		const jpg = document.createElement("canvas").toDataURL("image/jpeg").indexOf("data:image/jpeg") == 0;
-		const png = document.createElement("canvas").toDataURL("image/png").indexOf("data:image/png") == 0;
-		const gif = document.createElement("canvas").toDataURL("image/gif").indexOf("data:image/gif") == 0;
 
-		if (webp) return "webp";
-		if (avif) return "avif";
-		if (jpg) return "jpg";
-		if (png) return "png";
-		if (gif) return "gif";
-	};
 
 	onMount(() => {
 		(async () => {
 			articles = await fetchArticles();
 		})();
 
-		console.log(bestImageFileFormatThisBrowserSupports());
-
+		
 		mobile = window.innerWidth < 768;
 
 		window.addEventListener("resize", onResize);
@@ -113,7 +104,7 @@
 						<div class="text-container">
 							<h1>{article.name}</h1>
 							<p>{article.description}</p>
-							<img src={article.img} alt={article.name} loading="lazy" />
+							<img src={article.img} alt={article.name} loading={i < 2 ? "eager" : "lazy"	} />
 							<div class="tags">
 								{#each article.tech as tech}
 									<span>{tech}</span>

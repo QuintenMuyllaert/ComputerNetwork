@@ -3,7 +3,9 @@ import express, { Request, Response } from "express";
 import mime from "mime-types";
 import compression from "compression";
 
-import { createServer } from "spdy";
+//import { createServer } from "spdy";
+//const http2 = require("node:http2");
+import { createSecureServer as createServer } from "http2";
 
 import { createProxyMiddleware } from "http-proxy-middleware";
 
@@ -122,19 +124,20 @@ app.use(
 
 	const curves = ["secp521r1", "X448", "secp384r1", "secp256k1"];
 
-	const server = createServer(
-		{
-			key: certificate[0].privateKey,
-			cert: certificate[0].certificate,
-			ciphers: cips.join(":"),
-			ecdhCurve: curves.join(":"),
-			dhparam: certificate[0].dhparam,
-			spdy: {
-				protocols: ["h2", "http/1.1", "http/1.0", "spdy/3.1", "spdy/3", "spdy/2"],
-			},
-		},
-		app,
-	);
+	//fix ERR_HTTP2_PROTOCOL_ERROR 200
+	const server = createServer({
+		key: certificate[0].privateKey,
+		cert: certificate[0].certificate,
+		ciphers: cips.join(":"),
+		ecdhCurve: curves.join(":"),
+		dhparam: certificate[0].dhparam,
+		/*spdy: {
+				protocols: ["http/1.1", "http/1.0", "spdy/3.1", "spdy/3", "spdy/2"],
+			},*/
+	});
+
+	//attach app to server
+	server.on("request", app);
 
 	setInterval(async () => {
 		//check if there is a new certificate and update it

@@ -15,8 +15,8 @@ const config = {
 			assets: "build",
 			precompress: false,
 			strict: false,
+			trailingSlash: "always",
 		}),
-		trailingSlash: "always",
 	},
 };
 

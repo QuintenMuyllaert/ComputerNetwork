@@ -4,13 +4,13 @@
 	"description": "",
 	"main": "index.js",
 	"workspaces": [
-		"frontend"
+		"apps/*"
 	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"format": "prettier --write .",
-		"i": "npm install && npm install -w frontend",
-		"dev": "npm run dev -w frontend"
+		"start": "turbo start",
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"format": "prettier --write ."
 	},
 	"repository": {
 		"type": "git",
@@ -24,8 +24,9 @@
 	},
 	"homepage": "https://github.com/QuintenMuyllaert/ComputerNetwork#readme",
 	"devDependencies": {
-		"prettier": "^2.7.1",
-		"prettier-plugin-svelte": "^2.7.0",
-		"svelte": "^3.50.1"
+		"prettier": "^2.8.1",
+		"prettier-plugin-svelte": "^2.9.0",
+		"svelte": "^3.55.0",
+		"turbo": "^1.6.3"
 	}
 }

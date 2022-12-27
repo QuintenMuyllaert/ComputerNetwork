@@ -70,10 +70,27 @@
 		mobile = window.innerWidth < 768;
 	};
 
+	const bestImageFileFormatThisBrowserSupports = () => {
+		//webp > avif > jpg > png > gif
+		const webp = document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") == 0;
+		const avif = document.createElement("canvas").toDataURL("image/avif").indexOf("data:image/avif") == 0;
+		const jpg = document.createElement("canvas").toDataURL("image/jpeg").indexOf("data:image/jpeg") == 0;
+		const png = document.createElement("canvas").toDataURL("image/png").indexOf("data:image/png") == 0;
+		const gif = document.createElement("canvas").toDataURL("image/gif").indexOf("data:image/gif") == 0;
+
+		if (webp) return "webp";
+		if (avif) return "avif";
+		if (jpg) return "jpg";
+		if (png) return "png";
+		if (gif) return "gif";
+	};
+
 	onMount(() => {
 		(async () => {
 			articles = await fetchArticles();
 		})();
+
+		console.log(bestImageFileFormatThisBrowserSupports());
 
 		mobile = window.innerWidth < 768;
 

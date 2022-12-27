@@ -1,3 +1,19 @@
+# WebRTC Chat
+
+[img]: https://via.placeholder.com/1920x1080
+
+Lorem
+
+[tags]: 02-10-2022 WIP
+
+# UI Case Telenet TV
+
+[img]: https://via.placeholder.com/1920x1080
+
+Lorem
+
+[tags]: 02-10-2022 WIP
+
 # The Collective - My Machine
 
 [img]: /img/portfolio/mymachine.webp
@@ -57,6 +73,14 @@ This project involved a lot of electronics and programming.
 I also had to hand-solder 2 LED matrices.
 
 [tags]: Arduino C++
+
+# Coderdojo - JavaScript + Minecraft = Scriptcraft
+
+[img]: https://via.placeholder.com/1920x1080
+
+Lorem
+
+[tags]: WIP
 
 # GiP - Smart Power Sockets
 

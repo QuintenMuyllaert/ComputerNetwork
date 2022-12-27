@@ -10,7 +10,7 @@ const generateCertificateFiles = async () => {
 	const { DOMAIN, CLOUDFLARE_TOKEN, MAINTAINER_EMAIL } = process.env;
 	if (!DOMAIN || !CLOUDFLARE_TOKEN || !MAINTAINER_EMAIL) {
 		console.error("Missing environment variables\nMake sure you have a .env file with the following variables:\nDOMAIN\nCLOUDFLARE_TOKEN\nMAINTAINER_EMAIL");
-		process.exit(1);
+		process.exit(0);
 	}
 
 	try {

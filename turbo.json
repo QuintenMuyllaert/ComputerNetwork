@@ -19,6 +19,10 @@
 			"outputs": [],
 			"dependsOn": ["build"]
 		},
+		"start:prod": {
+			"outputs": [],
+			"dependsOn": ["build"]
+		},
 		"dev": {
 			"outputs": []
 		}

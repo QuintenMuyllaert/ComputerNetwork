@@ -1,3 +1,5 @@
+process.exit(0);
+
 import dotenv from "dotenv";
 import { promises as fs } from "fs";
 

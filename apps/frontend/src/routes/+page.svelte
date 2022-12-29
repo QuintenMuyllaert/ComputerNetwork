@@ -7,6 +7,7 @@
 	const sentences: string[] = [
 		"Hello world! 🌍",
 		"I'm a full-stack developer 👨‍💻",
+		"Aspiring 10x developer 💯",
 		"I'm a student at the University of Applied Sciences Howest in Kortrijk 🎓",
 		"I'm a CoderDojo mentor 🥋",
 		"I love to code 💖",
@@ -35,6 +36,7 @@
 		"Laureate best thesis project in VTI Menen 🏆",
 		"Made with ❤️ in Belgium 🇧🇪",
 		"npm install npm@latest -g",
+		"npm i -g pnpm",
 		"404: Not found 🤷‍♂️",
 		"@TODO: Add more sentences 🤔",
 	];

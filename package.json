@@ -7,7 +7,7 @@
 		"apps/*"
 	],
 	"scripts": {
-		"start": "turbo start",
+		"start": "turbo start:prod",
 		"build": "turbo build",
 		"dev": "turbo dev",
 		"format": "prettier --write ."

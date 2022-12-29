@@ -3,12 +3,42 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import sharp from "sharp";
 import path from "path";
+import https from "https";
+import http from "http";
+import fs from "fs";
 
 const app: Application = express();
 
+const cache: { url: any; buffer: any }[] = [];
+const cacheSize = 100;
+const generateCacheValue = (url: string, buffer: Buffer) => {
+	cache.push({
+		url,
+		buffer,
+	});
+
+	if (cache.length > cacheSize) {
+		cache.shift();
+	}
+};
+const checkCache = (url: string) => {
+	//only check url
+	const cacheValue = cache.find((cacheValue) => cacheValue.url === url);
+	if (cacheValue) {
+		//put cacheValue at the end of the array
+		cache.splice(cache.indexOf(cacheValue), 1);
+		return cacheValue.buffer;
+	}
+	return null;
+};
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+	cors({
+		origin: "*",
+	}),
+);
 
 //middleware for all /img/* routes
 app.use("/img", async (req: Request, res: Response, next: any) => {
@@ -17,6 +47,17 @@ app.use("/img", async (req: Request, res: Response, next: any) => {
 	// /img/foo.jpg -> ../frontend/static/img/foo.jpg
 	const filePath = path.join(__dirname, "../../frontend/static/img", req.path);
 	console.log(filePath);
+
+	//set a very long cache time for images
+	res.set("Cache-Control", "public, max-age=31536000");
+
+	//check if image is in cache
+	const cacheValue = checkCache(req.path + JSON.stringify(req.query));
+	if (cacheValue) {
+		console.log("cache hit");
+		res.set("Content-Type", "image/" + format);
+		return res.send(cacheValue);
+	}
 
 	try {
 		const image = await sharp(filePath);
@@ -71,6 +112,10 @@ app.use("/img", async (req: Request, res: Response, next: any) => {
 		}
 
 		const buffer = await image.toBuffer();
+
+		//add image to cache
+		generateCacheValue(req.path + JSON.stringify(req.query), buffer);
+
 		res.set("Content-Type", "image/" + format);
 		return res.send(buffer);
 	} catch (err) {
@@ -79,10 +124,25 @@ app.use("/img", async (req: Request, res: Response, next: any) => {
 	}
 });
 
-app.get("/", (req: Request, res: Response) => {
-	res.send("Hello World!");
+app.use(express.static(path.join(__dirname, "../../frontend/build")));
+
+const httpsOptions = {
+	key: fs.readFileSync(path.join(__dirname, "../../ssl/pems/key.pem")),
+	cert: fs.readFileSync(path.join(__dirname, "../../ssl/pems/cert.pem")),
+};
+
+const httpsServer = https.createServer(httpsOptions, app);
+
+httpsServer.listen(443, () => {
+	console.log("HTTPS Server running on port 443");
 });
 
-app.listen(3000, () => {
-	console.log("Server started on port 3000");
+//redirect http to https
+const httpServer = http.createServer((req, res) => {
+	res.writeHead(301, { Location: "https://" + req.headers["host"] + req.url });
+	res.end();
+});
+
+httpServer.listen(80, () => {
+	console.log("HTTP Server running on port 80");
 });

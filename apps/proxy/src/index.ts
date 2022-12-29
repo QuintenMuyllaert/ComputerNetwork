@@ -1,3 +1,5 @@
+process.exit(0);
+
 import dotenv from "dotenv";
 import express, { Request, Response } from "express";
 import mime from "mime-types";

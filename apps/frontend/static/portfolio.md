@@ -1,6 +1,6 @@
 # WebRTC Chat
 
-[img]: https://via.placeholder.com/720x480
+[img]: /img/portfolio/chat.png
 
 Lorem
 
@@ -8,7 +8,7 @@ Lorem
 
 # UI Case Telenet TV
 
-[img]: https://via.placeholder.com/720x480
+[img]: /img/portfolio/mockup.png
 
 Lorem
 

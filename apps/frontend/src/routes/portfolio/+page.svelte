@@ -1,8 +1,9 @@
 <script lang="ts">
   	import { bestImageFileFormatThisBrowserSupports } from "../../utils/imageformat";
-	import { onMount } from "svelte";
+	import { onMount,onDestroy } from "svelte";
 	import CrumbledContainer from "../../components/CrumbledContainer.svelte";
 	import Navbar from "../../components/Navbar.svelte";
+  	import { backendUrl, isBrowser } from "../../utils/globals";
 
 	interface Project {
 		name: string;
@@ -51,7 +52,7 @@
 				bufferArticle.img = line.slice(7);
 				if(!bufferArticle.img.startsWith("http")){
 					const width = Math.min(768, window.innerWidth);
-					bufferArticle.img = `http://localhost:3000${bufferArticle.img}?format=${bestImageFileFormatThisBrowserSupports()}&quality=80&width=${width}`
+					bufferArticle.img = `${backendUrl}${bufferArticle.img}?format=${bestImageFileFormatThisBrowserSupports()}&quality=80&width=${width}`
 				}
 			}
 			if (line.startsWith("[link]:")) {
@@ -76,27 +77,30 @@
 	};
 
 
-
-	onMount(() => {
-		(async () => {
-			articles = await fetchArticles();
-		})();
-
-		
+	onMount(() => {		
 		mobile = window.innerWidth < 768;
-
 		window.addEventListener("resize", onResize);
-		return () => {
-			articles = [];
-			window.removeEventListener("resize", onResize);
-		};
+	});
+
+	onDestroy(() => {
+		isBrowser && window.removeEventListener("resize", onResize);
+		articles = [];
 	});
 </script>
+
+<svelte:head>
+	<title>Portfolio - Quinten Muyllaert</title>
+	<meta name="description" content="Portfolio of my projects" />
+	<link rel="preload" href="/portfolio.md" as="fetch" />
+	<link rel="dns-prefetch" href={backendUrl} />			
+	<link rel="preconnect" href={backendUrl} />
+</svelte:head>
 
 <div class="page">
 	<Navbar />
 	<main>
 		<!-- loop over the articles-->
+		{#await fetchArticles() then articles}
 		{#each articles as article, i}
 			<CrumbledContainer>
 				<div class="container">
@@ -131,6 +135,7 @@
 				</div>
 			</CrumbledContainer>
 		{/each}
+		{/await}
 	</main>
 </div>
 

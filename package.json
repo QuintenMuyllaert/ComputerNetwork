@@ -10,7 +10,10 @@
 		"start": "turbo start:prod",
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"docker-build": "npm run build && docker build -t computernetwork .",
+		"docker-tag": "npm run docker-build && docker tag computernetwork:latest registry.computernetwork.be/computernetwork:latest",
+		"docker-push": "npm run docker-tag && docker push registry.computernetwork.be/computernetwork:latest"
 	},
 	"repository": {
 		"type": "git",

@@ -3,9 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import sharp from "sharp";
 import path from "path";
-import https from "https";
 import http from "http";
-import fs from "fs";
 
 const app: Application = express();
 
@@ -44,8 +42,8 @@ app.use(
 app.use("/img", async (req: Request, res: Response, next: any) => {
 	console.log("middleware for /img/* routes");
 	const { width, height, format, quality } = req.query;
-	// /img/foo.jpg -> ../frontend/static/img/foo.jpg
-	const filePath = path.join(__dirname, "../../frontend/static/img", req.path);
+	// /img/foo.jpg -> ../frontend/build/img/foo.jpg
+	const filePath = path.join(__dirname, "../../frontend/build/img", req.path);
 	console.log(filePath);
 
 	//set a very long cache time for images
@@ -126,22 +124,7 @@ app.use("/img", async (req: Request, res: Response, next: any) => {
 
 app.use(express.static(path.join(__dirname, "../../frontend/build")));
 
-const httpsOptions = {
-	key: fs.readFileSync(path.join(__dirname, "../../ssl/pems/key.pem")),
-	cert: fs.readFileSync(path.join(__dirname, "../../ssl/pems/cert.pem")),
-};
-
-const httpsServer = https.createServer(httpsOptions, app);
-
-httpsServer.listen(443, () => {
-	console.log("HTTPS Server running on port 443");
-});
-
-//redirect http to https
-const httpServer = http.createServer((req, res) => {
-	res.writeHead(301, { Location: "https://" + req.headers["host"] + req.url });
-	res.end();
-});
+const httpServer = http.createServer(app);
 
 httpServer.listen(80, () => {
 	console.log("HTTP Server running on port 80");

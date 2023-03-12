@@ -1,9 +1,0 @@
-{
-	"computernetwork.be": {
-		"endpoint": "https://computernetwork.fra1.digitaloceanspaces.com/",
-		"modules": ["mime", "static", "cache"]
-	},
-	"www.computernetwork.be": {
-		"sameAs": "computernetwork.be"
-	}
-}

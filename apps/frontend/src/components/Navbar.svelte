@@ -26,6 +26,7 @@
 	<ul>
 		<li><a href="/">Home</a></li>
 		<li><a href="/portfolio">Portfolio</a></li>
+		<li><a href="/cv.pdf">CV</a></li>
 		<li><button bind:this={button} on:click={toggleTheme}>☀</button></li>
 	</ul>
 </nav>

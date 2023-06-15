@@ -62,7 +62,7 @@
 				bufferArticle.tech = line.slice(8).split(" ");
 			}
 			if (!line.startsWith("#") && !line.startsWith("[img]:") && !line.startsWith("[tags]:")) {
-				bufferArticle.description += line;
+				bufferArticle.description += line + "\n";
 			}
 		}
 		if (bufferArticle) {
@@ -154,7 +154,8 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 1rem;
+		border-radius: 0.25rem;
+		aspect-ratio: 4/3;
 	}
 
 	.container {
@@ -167,7 +168,7 @@
 	}
 
 	.text-container {
-		border-radius: 1rem;
+		border-radius: 0.25rem;
 		background-color: var(--color-container-background);
 		width: 100%;
 		height: 100%;

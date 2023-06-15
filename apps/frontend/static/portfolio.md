@@ -1,18 +1,40 @@
+# Research Project - Digital Signage
+
+[img]: /img/portfolio/Screenshot_20230202_025832.png
+
+My Research Project is revolves around the question: "How can we make a Digital Signage Platform based on the Raspberry Pi & Svelte?"
+The goal of this project is to make a Digital Signage Platform that can be used to display content on a screen.
+It should have a web interface with an easy to use editor.
+I inplemented a lot of features like a live preview, a drag and drop editor and a lot more.
+It is also written in TypeScript and uses WebSockets to communicate with the server.
+The server is written in NodeJS and uses Prisma to communicate with the database.
+[link]: https://github.com/QuintenMuyllaert/Signage
+
+[tags]: 30-01-2022 RaspberryPi Svelte NodeJS TypeScript WebSockets
+
 # WebRTC Chat
 
 [img]: /img/portfolio/chat.png
 
-Lorem
+My final project for the Course Advanced Fullstack Web Development is a WebRTC Chat.
+It is written in TypeScript and uses SvelteKit as a frontend framework.
+The clients can communicate with each other using WebRTC.
+I inplemented a lot of features like voice and video calling, file sharing, chatting, friends and a lot more.
+It is also a PWA so it can be installed on your phone or computer just like a normal app.
+[link]: https://github.com/QuintenMuyllaert/AFSWD-WebRTC-Chat
 
-[tags]: 02-10-2022 WIP
+[tags]: 02-10-2022 WebRTC SvelteKit TypeScript NodeJS PWA
 
 # UI Case Telenet TV
 
 [img]: /img/portfolio/mockup.png
 
-Lorem
+My final project for the Course New Interface Design is a UI Case for Telenet TV. I had to make a UI Case for a company of my choice.
+I chose to make a UI Case for Telenet TV because I use it a lot and I think it could use some improvements.
+I cut the clutter and made the UI more intuitive and easy to use.
+I also added a lot of new features like a new home screen, a new guide.
 
-[tags]: 02-10-2022 WIP
+[tags]: 02-10-2022 AdobeXD PowerPoint
 
 # The Collective - My Machine
 
@@ -20,8 +42,12 @@ Lorem
 
 We are working on a new project for a company called My Machine.
 It is a Belgian company that lets children dream of a whacky machine that can do anything. We are challenged to design a one.
+After a few workshops and brainstorming sessions we came up with a few ideas.
+But we decided to go with the idea of a "companion dragon". This dragon is a friend that can help kids when they are not feeling well.
+We also maintained a blog on the company's website where we posted our progress and our thoughts.
+[link]: http://www.mymachinevlaanderen.be/droommachine/blogdraak/
 
-[tags]: 02-10-2022 WIP Teamwork
+[tags]: 02-10-2022 Teamwork Electronics Prototyping
 
 # Personal Project - Portfolio
 
@@ -29,7 +55,7 @@ It is a Belgian company that lets children dream of a whacky machine that can do
 
 This is my personal portfolio website, it's built with Svelte and SCSS.
 
-[tags]: Svelte SCSS
+[tags]: SvelteKit SCSS Cloudflare DigitalOcean TypeScript
 
 # Industry Project - DLC Scoreboard
 
@@ -41,9 +67,21 @@ Our PWA is used to control the football scoreboard in KM Torhout - "Velodroom".
 
 [tags]: React NodeJS TypeScript Scss SocketIO
 
+# Interaction Design - Rune Exchange
+
+[img]: /img/portfolio/quintenmuyllaert.github.io_Eindopdracht-InteractionDesign_.png
+
+During the course Interaction Design we had to make a PWA reading data from a public API.
+I chose to use the RuneScape API to make a RuneScape Exchange PWA.
+This PWA allows you to search for items and see their current price and their price history.
+You can also favorite items and see a description of the item.
+[link]: https://quintenmuyllaert.github.io/Eindopdracht-InteractionDesign/
+
+[tags]: 23-12-2021 HTML CSS JavaScript PWA
+
 # Team Project - Transfo Zwevegem
 
-[img]: /img/portfolio/IMG_20220125_145602.jpg
+[img]: /img/portfolio/transfoproject.png
 
 First semester of my Bachlor 2MCT Next Web Developer we got assigned a Team Project.
 Our team project had us building a 4K kiosk style Webapp to show energy data in a human readable manner.
@@ -76,11 +114,13 @@ I also had to hand-solder 2 LED matrices.
 
 # Coderdojo - JavaScript + Minecraft = Scriptcraft
 
-[img]: https://via.placeholder.com/1920x1080
+[img]: /img/portfolio/2023-02-11_11.47.05.png
 
-Lorem
+I'm a volunteer at Coderdojo Ypres. I teach the kids the basics of JavaScript through Minecraft.
+I made and maintain a Minecraft Wrapper called Scriptcraft, which allows the kids and teens to write JavaScript code to control Minecraft.
+I also wrote a library into it based on the original Scriptcraft Bukkit plugin. This allowed older scripts to be backwards compatible.
 
-[tags]: WIP
+[tags]: JavaScript Minecraft NodeJS Coderdojo
 
 # GiP - Smart Power Sockets
 

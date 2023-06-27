@@ -9,19 +9,26 @@
 	//get the canvas element
 	let canvas: HTMLCanvasElement;
 
-	const particles: IParticle[] = [];
-	for (let i = 0; i < 100; i++) {
-		particles.push(new Particle());
-	}
+	//check if device is a mobile device or not 
+	const isMobile = () => {
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	};
 
 	//resize the canvas to the size of the window
-	function resizeCanvas() {
+	const resizeCanvas = () => {
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
 	}
 
 	//get the canvas context when loaded
 	onMount(() => {
+		const mobile: boolean = isMobile();
+
+		const particles: IParticle[] = [];
+		for (let i = 0; i < (mobile ? 10 : 100); i++) {
+			particles.push(new Particle());
+		}
+
 		const ctx = canvas.getContext("2d");
 		if (!ctx) return;
 

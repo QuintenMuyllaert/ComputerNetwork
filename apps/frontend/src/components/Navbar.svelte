@@ -1,10 +1,12 @@
 <script lang="ts">
+	import {onMount } from "svelte"
+
 	import { bestImageFileFormatThisBrowserSupports } from "../utils/imageformat";
 	import { backendUrl } from "../utils/globals";
 
 	let button: HTMLButtonElement;
 
-	function toggleTheme() {
+	const toggleTheme = () => {
 		let theme = localStorage.getItem("theme");
 
 		if (theme === "dark") {
@@ -19,6 +21,11 @@
 
 		document.location.reload();
 	}
+
+	onMount(() => {
+		//remove theme object ( 27-06-2023 )
+		localStorage.removeItem("theme");
+	});
 </script>
 
 <nav>
@@ -27,7 +34,7 @@
 		<li><a href="/">Home</a></li>
 		<li><a href="/portfolio">Portfolio</a></li>
 		<li><a href="/cv.pdf">CV</a></li>
-		<li><button bind:this={button} on:click={toggleTheme}>☀</button></li>
+		<!-- <li><button bind:this={button} on:click={toggleTheme}>☀</button></li> -->
 	</ul>
 </nav>
 
@@ -38,7 +45,6 @@
 			max-height: 100%;
 			filter: brightness(0) invert(1);
 		}
-
 		display: flex;
 		justify-content: space-between;
 		padding: 0.5rem;

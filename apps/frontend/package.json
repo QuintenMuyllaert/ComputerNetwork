@@ -35,5 +35,8 @@
 		"vite": "^4.3.9",
 		"vite-plugin-compression": "^0.5.1"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-markdown": "^0.2.3"
+	}
 }

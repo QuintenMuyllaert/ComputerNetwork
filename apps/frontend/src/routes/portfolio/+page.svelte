@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SvelteMarkdown from "svelte-markdown";
   	import { bestImageFileFormatThisBrowserSupports } from "../../utils/imageformat";
 	import { onMount,onDestroy } from "svelte";
 	import CrumbledContainer from "../../components/CrumbledContainer.svelte";
@@ -10,7 +11,6 @@
 		description: string;
 		tech: string[];
 		img: string;
-		link: string;
 	}
 
 	let articles: Project[] = [];
@@ -42,7 +42,6 @@
 					description: "",
 					tech: [],
 					img: "",
-					link: "",
 				};
 			}
 
@@ -54,9 +53,6 @@
 					const width = Math.min(768, window.innerWidth);
 					bufferArticle.img = `${backendUrl}${bufferArticle.img}?format=${bestImageFileFormatThisBrowserSupports()}&quality=80&width=${width}`
 				}
-			}
-			if (line.startsWith("[link]:")) {
-				bufferArticle.link = line.slice(7);
 			}
 			if (line.startsWith("[tags]:")) {
 				bufferArticle.tech = line.slice(8).split(" ");
@@ -107,7 +103,7 @@
 					{#if mobile}
 						<div class="text-container">
 							<h1>{article.name}</h1>
-							<p>{article.description}</p>
+							<SvelteMarkdown source={article.description} />
 							<img src={article.img} alt={article.name} loading={i < 2 ? "eager" : "lazy"	} />
 							<div class="tags">
 								{#each article.tech as tech}

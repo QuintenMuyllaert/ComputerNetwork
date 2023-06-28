@@ -1,3 +1,27 @@
+# Bachelorthesis - Digital Signage
+
+[img]: /img/portfolio/IMG_4195.jpg
+
+I have written my thesis in Dutch, and my research question is "Hoe maken we een Digital Signage platform op basis van de Raspberry PI & Svelte?" This translates to "How do we make a Digital Signage platform based on the Raspberry PI & Svelte?"
+
+In my thesis, I extensively explore the topic of Digital Signage, including existing players in the field. The main focus is on developing a robust and scalable Digital Signage platform. Throughout the 70-page write-up, I discuss various aspects related to this topic.
+
+Additionally, I address the issue of the shortage of Raspberry Pi devices and highlight the advantages and capabilities of Svelte in the context of developing the platform.
+
+[tags]: (01/06)-2023 RaspberryPi Svelte DigitalSignage
+
+# Internship - DLC Sportsystems
+
+[img]: /img/portfolio/IMG_20230224_105700.jpg
+
+During my internship at [DLC Sportsystems](https://sportsystems.eu) in Torhout, I had the opportunity to contribute to the development of the global Sportsystems app. This application aims to enhance the world of sports by leveraging smart technologies.
+
+My role encompassed full-stack development, where I worked on various aspects ranging from the frontend to the backend, including the database. Additionally, I gained experience in DEVOPS practices, CI/CD implementation, and infrastructure management.
+
+Notably, the app boasts a robust and scalable user management system, equipped with roles and permissions. Furthermore, both the backend and frontend of the application are designed to scale effectively. The database, too, is structured to accommodate scalability requirements.
+
+[tags]: (01/06)-2023 Fullstack PWA Svelte Docker Cloudflare
+
 # Research Project - Digital Signage
 
 [img]: /img/portfolio/Screenshot_20230202_025832.png
@@ -8,7 +32,7 @@ It should have a web interface with an easy to use editor.
 I inplemented a lot of features like a live preview, a drag and drop editor and a lot more.
 It is also written in TypeScript and uses WebSockets to communicate with the server.
 The server is written in NodeJS and uses Prisma to communicate with the database.
-[link]: https://github.com/QuintenMuyllaert/Signage
+[Github Repo](https://github.com/QuintenMuyllaert/Signage)
 
 [tags]: 30-01-2022 RaspberryPi Svelte NodeJS TypeScript WebSockets
 
@@ -21,7 +45,7 @@ It is written in TypeScript and uses SvelteKit as a frontend framework.
 The clients can communicate with each other using WebRTC.
 I inplemented a lot of features like voice and video calling, file sharing, chatting, friends and a lot more.
 It is also a PWA so it can be installed on your phone or computer just like a normal app.
-[link]: https://github.com/QuintenMuyllaert/AFSWD-WebRTC-Chat
+[Github Repo](https://github.com/QuintenMuyllaert/AFSWD-WebRTC-Chat)
 
 [tags]: 02-10-2022 WebRTC SvelteKit TypeScript NodeJS PWA
 
@@ -45,7 +69,7 @@ It is a Belgian company that lets children dream of a whacky machine that can do
 After a few workshops and brainstorming sessions we came up with a few ideas.
 But we decided to go with the idea of a "companion dragon". This dragon is a friend that can help kids when they are not feeling well.
 We also maintained a blog on the company's website where we posted our progress and our thoughts.
-[link]: http://www.mymachinevlaanderen.be/droommachine/blogdraak/
+[My Machine Blog](http://www.mymachinevlaanderen.be/droommachine/blogdraak/)
 
 [tags]: 02-10-2022 Teamwork Electronics Prototyping
 
@@ -53,7 +77,8 @@ We also maintained a blog on the company's website where we posted our progress 
 
 [img]: /img/portfolio/portfolio.webp
 
-This is my personal portfolio website, it's built with Svelte and SCSS.
+This is my personal portfolio website, it's built with SvelteKit SSG and SCSS.
+I keep it updates with my latest and greatest projects and my CV.
 
 [tags]: SvelteKit SCSS Cloudflare DigitalOcean TypeScript
 
@@ -75,7 +100,7 @@ During the course Interaction Design we had to make a PWA reading data from a pu
 I chose to use the RuneScape API to make a RuneScape Exchange PWA.
 This PWA allows you to search for items and see their current price and their price history.
 You can also favorite items and see a description of the item.
-[link]: https://quintenmuyllaert.github.io/Eindopdracht-InteractionDesign/
+[Github Repo]:(https://quintenmuyllaert.github.io/Eindopdracht-InteractionDesign/)
 
 [tags]: 23-12-2021 HTML CSS JavaScript PWA
 
@@ -168,15 +193,17 @@ In Coderdojo I made a program that could draw fractals.
 
 [img]: /img/portfolio/IMG_20191223_170949.jpg
 
-Tank
+This was a fun side project of making a WiFi controlled RC tank, it had an ESP32 cam onboard.
+This allowed me to drive the tank from anywhere in the world and see where it was going. I also programmed a camera based line follower with it.
 
-[tags]: 23-12-2019 ESP32 C++
+[tags]: 23-12-2019 ESP32 Camera C++
 
 # Project Lamp
 
 [img]: /img/portfolio/lamp.webp
 
-Lamp goes brr.
+What do you do when you have an old light switch and electronics knowledge? You make a _Sketchy_ servo activated light switch!
+It can still be used manually and an LDR is used to determine whether the light switch is enabled or disabled, depending on this the servo knew what way to turn to toggle the light switch. It could be programmed to a schedule or toggled with an IR remote.
 
 [tags]: 18-12-2019 Arduino C++
 
